@@ -1,17 +1,21 @@
-import React, { lazy } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 
 import Header from '../components/common/Header.jsx';
-const Home = lazy(()=> import('./home/index'))
+const Home = lazy(()=> import('./home/index.tsx'));
+const List = lazy(()=> import('./list/index.tsx'));
 
 function index() {
     return (
         <Layout>
             <Header />
-            <Routes>
-                <Route path='/' element={<Home />} />
-            </Routes>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/list' element={<List />} />
+                </Routes>
+            </Suspense>
         </Layout>
     )
 }
