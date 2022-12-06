@@ -20,6 +20,7 @@ const Container = styled('div')(({
 const AddInput = styled(TextField)(({
     width: '50%',
     maxWidth: '35rem',
+    minWidth: '28rem',
 }))
 
 export default index;

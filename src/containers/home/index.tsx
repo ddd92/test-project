@@ -6,7 +6,7 @@ import { Start } from '@mui/icons-material';
 const index: FunctionComponent = () => {
     return (
         <Container>
-            <h2>Todo List</h2>
+            <Title>Todo List</Title>
             <Link to={'/list'}><StartIcon /></Link>
         </Container>
     )
@@ -20,7 +20,12 @@ const Container = styled('div')(({
     width: '100%',
 }));
 
+const Title = styled('h1')(({
+    fontSize: '3rem',
+}))
+
 const StartIcon = styled(Start)(({
+    fontSize: '2rem',
     color: 'black',
     
     '&:hover': {
