@@ -7,13 +7,13 @@ const index = () => {
     return (
         <Container>
             <Link to={'/'}>
-                <HomeIcon color='action' />
+                <HomeIcon color='primary'/>
             </Link>
         </Container>
     )
 }
 
-const Container = styled('div')(({
+const Container = styled('div')(() => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -21,9 +21,9 @@ const Container = styled('div')(({
     padding: '10px 15px',
 }))
 
-const HomeIcon = styled(Home)(({
+const HomeIcon = styled(Home)(({ theme }) => ({
     '&:hover':{
-        color: 'green',
+        color: theme.palette.primary.light,
     }
 }))
 
