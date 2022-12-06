@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 
 import Header from '../components/common/Header.jsx';
-const Home = lazy(()=> import('./home/index.tsx'));
-const List = lazy(()=> import('./list/index.tsx'));
+const Home = lazy(()=> import('./home/index'));
+const List = lazy(()=> import('./list/index'));
 
 function index() {
     return (
