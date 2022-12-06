@@ -1,11 +1,23 @@
 import React, { FunctionComponent } from "react";
 import { TextField } from "@mui/material";
-import { styled } from '@mui/material/styles';
+import { styled  } from '@mui/material/styles';
+import { AddItemTypes } from 'types/List';
+import { useEffect } from "react";
 
-const index: FunctionComponent = () => {
+const index: FunctionComponent<AddItemTypes> = (props) => {
+    const { value, onChangeHandler, onPressEnter } = props;
+
+    useEffect(() => { console.log(value) },[value])
+
     return (
         <Container>
-            <AddInput label='what needs to be doen?' variant="filled"/>
+            <AddInput 
+                label='what needs to be done?'
+                variant="filled"
+                value={value}
+                onChange={onChangeHandler}
+                onKeyDown={onPressEnter}
+            />
         </Container>
     )
 }
@@ -18,9 +30,7 @@ const Container = styled('div')(({
 }))
 
 const AddInput = styled(TextField)(({
-    width: '50%',
-    maxWidth: '35rem',
-    minWidth: '28rem',
+    width: '100%',
 }))
 
 export default index;
