@@ -17,7 +17,7 @@ function index() {
                 </Routes>
             </Suspense>
         </Layout>
-    )
+    );
 }
 
 export default index;

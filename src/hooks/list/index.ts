@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, KeyboardEvent } from "react"
+import { useState, ChangeEvent, KeyboardEvent } from "react";
 import { ListTypes } from 'types/List'; 
 
 const useToDoList = (): ListTypes => {
@@ -26,7 +26,7 @@ const useToDoList = (): ListTypes => {
         }
     };
 
-    return { value: inputValue, list, onChangeHandler, onPressEnter }
-}
+    return { value: inputValue, list, onChangeHandler, onPressEnter };
+};
 
 export default useToDoList;

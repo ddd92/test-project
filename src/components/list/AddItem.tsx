@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const index: FunctionComponent<AddItemTypes> = (props) => {
     const { value, onChangeHandler, onPressEnter } = props;
 
-    useEffect(() => { console.log(value) },[value])
+    useEffect(() => { console.log(value); },[value]);
 
     return (
         <Container>
@@ -19,18 +19,18 @@ const index: FunctionComponent<AddItemTypes> = (props) => {
                 onKeyDown={onPressEnter}
             />
         </Container>
-    )
-}
+    );
+};
 
 const Container = styled('div')(({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-}))
+}));
 
 const AddInput = styled(TextField)(({
     width: '100%',
-}))
+}));
 
 export default index;

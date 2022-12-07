@@ -10,8 +10,8 @@ const index = () => {
                 <HomeIcon color='primary'/>
             </Link>
         </Container>
-    )
-}
+    );
+};
 
 const Container = styled('div')(() => ({
     display: 'flex',
@@ -19,12 +19,12 @@ const Container = styled('div')(() => ({
     justifyContent: 'space-between',
     width: '100%',
     padding: '10px 15px',
-}))
+}));
 
 const HomeIcon = styled(Home)(({ theme }) => ({
     '&:hover':{
         color: theme.palette.primary.light,
     }
-}))
+}));
 
 export default index;

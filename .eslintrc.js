@@ -21,5 +21,15 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-var": [
+            "error",
+        ],
+        "prefer-arrow-callback": [
+            "error",
+        ],
     },
-}
+};

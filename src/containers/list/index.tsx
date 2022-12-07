@@ -16,8 +16,8 @@ const index: FunctionComponent = () => {
                 {list.map((item: ListItemTypes, index) => <ListItem key={index} {...item} />)}
             </ListContainer>
         </Container>
-    )
-}
+    );
+};
 
 const Container = styled('div')(({
     display: 'flex',
@@ -31,10 +31,10 @@ const Container = styled('div')(({
 
 const Title = styled('h1')(({
     fontSize: '3rem',
-}))
+}));
 
 const ListContainer = styled(List)(({
     width: '100%',
-}))
+}));
 
 export default index;
