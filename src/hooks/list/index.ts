@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, KeyboardEvent } from "react";
+import { useState, ChangeEvent, KeyboardEvent, MouseEvent } from "react";
 import { ListTypes } from 'types/List'; 
 
 const useToDoList = (): ListTypes => {
@@ -26,7 +26,14 @@ const useToDoList = (): ListTypes => {
         }
     };
 
-    return { value: inputValue, list, onChangeHandler, onPressEnter };
+    const deleteListItem = (e: MouseEvent<HTMLButtonElement>, key) => {
+        console.log(key);
+        const temp = list.slice();
+        delete temp[key];
+        setList(temp);
+    };
+
+    return { value: inputValue, list, onChangeHandler, onPressEnter, deleteListItem };
 };
 
 export default useToDoList;
