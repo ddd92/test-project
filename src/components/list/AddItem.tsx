@@ -2,12 +2,9 @@ import React, { FunctionComponent } from "react";
 import { TextField } from "@mui/material";
 import { styled  } from '@mui/material/styles';
 import { AddItemTypes } from 'types/List';
-import { useEffect } from "react";
 
 const index: FunctionComponent<AddItemTypes> = (props) => {
     const { value, onChangeHandler, onPressEnter } = props;
-
-    useEffect(() => { console.log(value); },[value]);
 
     return (
         <Container>

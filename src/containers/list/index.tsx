@@ -6,14 +6,29 @@ import AddItem from 'components/list/AddItem';
 import ListItem from 'components/list/ListItem';
 
 const index: FunctionComponent = () => {
-    const { list, value,  onChangeHandler, onPressEnter, deleteListItem } = useToDoList();
+    const { 
+        list,
+        value,
+        onChangeHandler,
+        onPressEnter,
+        deleteListItem,
+        onChangeCheckBox,
+    } = useToDoList();
 
     return ( 
         <Container>
             <Title>todos</Title>
             <AddItem value={value} onChangeHandler={onChangeHandler} onPressEnter={onPressEnter} />
             <ListContainer>
-                {list.map((item: ListItemTypes, index) => <ListItem key={index} {...item} itemId={index} deleteListItem={deleteListItem}/>)}
+                {list.map((item: ListItemTypes, index) => 
+                    (<ListItem 
+                        key={index}
+                        {...item}
+                        itemId={index}
+                        deleteListItem={deleteListItem}
+                        onChangeCheckBox={onChangeCheckBox}
+                    />)
+                )}
             </ListContainer>
         </Container>
     );

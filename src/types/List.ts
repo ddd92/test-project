@@ -6,17 +6,26 @@ interface AddItemTypes {
     onPressEnter: (e: KeyboardEvent<HTMLInputElement>) => void,
 }
 
+interface ListData {
+    content: string,
+    completed: boolean,
+    dueDate: Date,
+}
+
 interface ListTypes extends AddItemTypes {
-    list: object [],
-    deleteListItem: (e: MouseEvent<HTMLButtonElement>, idx: number) => void,
+    list: ListData[],
+    deleteListItem: (e: MouseEvent<HTMLButtonElement>, itemId: number) => void,
+    onChangeCheckBox: (e: ChangeEvent<HTMLInputElement>, checked: boolean, itemId: number) => void,
 }
 
 interface ListItemTypes {
     key: number,
     itemId: number, 
     content: string,
+    completed: boolean,
     dueDate: Date,
-    deleteListItem: (e: MouseEvent<HTMLButtonElement>, idx: number) => void,
+    deleteListItem: (e: MouseEvent<HTMLButtonElement>, itemId: number) => void,
+    onChangeCheckBox: (e: ChangeEvent<HTMLInputElement>, checked: boolean, itemId: number) => void,
 }
 
-export { AddItemTypes, ListTypes, ListItemTypes };
+export { AddItemTypes, ListTypes, ListData, ListItemTypes };

@@ -12,17 +12,18 @@ import {
 } from '@mui/material';
 import { RemoveCircle } from '@mui/icons-material';
 import { ListItemTypes } from 'types/List';
+import { Theme } from '@mui/system';
 
 const index = (props: ListItemTypes) => {
-    const { dueDate, content, itemId, deleteListItem } = props;
+    const { dueDate, content, completed, itemId, deleteListItem, onChangeCheckBox } = props;
     const [checked, setChecked] = React.useState([0]);
 
-    const handleToggle = (value: number) => () => {
-        const currentIndex = checked.indexOf(value);
+    const handleToggle = () => () => {
+        const currentIndex = checked.indexOf(itemId);
         const newChecked = [...checked];
 
         if (currentIndex === -1) {
-            newChecked.push(value);
+            newChecked.push(itemId);
         } else {
             newChecked.splice(currentIndex, 1);
         }
@@ -40,37 +41,60 @@ const index = (props: ListItemTypes) => {
                 </IconButton>
             )}
         >
-            <ListItemContent onClick={handleToggle(itemId)}>
+            {/* <ListItemContent onClick={handleToggle} > */}
                 <ListItemIcon>
                 <Checkbox
                     edge="start"
-                    checked={checked.indexOf(itemId) !== -1}
+                    defaultChecked={completed}
                     tabIndex={-1}
                     disableRipple
                     inputProps={{ 'aria-labelledby': labelId }}
-                    />
+                    onChange={(e, checked) => onChangeCheckBox(e, checked, itemId)}
+                />
                 </ListItemIcon>
-                <DueDate>
-                    {moment(dueDate).format('MM/DD')}
-                </DueDate>
-                <Divider orientation="vertical" variant="middle" flexItem />
-                <TextContent id={labelId} primary={content} />
-            </ListItemContent>
+                <CompletedContainer completed={completed.toString()} >
+                    <DueDate>
+                        {moment(dueDate).format('MM/DD')}
+                    </DueDate>
+                    <Divider orientation="vertical" variant="middle" flexItem />
+                    <TextContent id={labelId} primary={content} />
+                </CompletedContainer>
+            {/* </ListItemContent> */}
         </ListItemContainer>
     );
 };
 
 const ListItemContainer = styled(ListItem)(({
     display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'start',
+    flexDirection: 'row',
+    alignItems: 'center',
     width: '100%',
 }));
 
-const ListItemContent = styled(ListItemButton)(({
-    justifyContent: 'start',
+const CompletedContainer = styled('div')(({ theme, completed } : { theme?: Theme, completed: string}) => ({
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
     width: '100%',
+    color: completed === 'true' && `${theme.palette.secondary.light}`,
+
+    '&::after': completed === 'true' &&  {
+        position: 'absolute',
+        content: '""',
+        width: '100%',
+        height: '1px',
+        left: '0',
+        border: `1px solid ${theme.palette.secondary.light}`,
+    }
 }));
+
+// const ListItemContent = styled(ListItemButton)(({ 
+//     justifyContent: 'start',
+//     width: '100%',
+//     paddingRight: '10px',
+// }));
+
 
 const DueDate = styled('span')(({
     marginRight: '15px',

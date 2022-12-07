@@ -1,8 +1,8 @@
 import { useState, ChangeEvent, KeyboardEvent, MouseEvent } from "react";
-import { ListTypes } from 'types/List'; 
+import { ListTypes, ListData } from 'types/List'; 
 
 const useToDoList = (): ListTypes => {
-    const [list, setList] = useState<object []>([]);
+    const [list, setList] = useState<ListData[]>([]);
     const [inputValue, setInputValue] = useState<string>('');
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +18,11 @@ const useToDoList = (): ListTypes => {
 
             if(!isComposing){
                 const temp = list.slice();
-                temp.push({ dueDate: new Date(), content: inputValue });
+                temp.push({
+                    completed: false, 
+                    dueDate: new Date(),
+                    content: inputValue
+                });
                 setList(temp);
     
                 setInputValue('');
@@ -26,14 +30,26 @@ const useToDoList = (): ListTypes => {
         }
     };
 
-    const deleteListItem = (e: MouseEvent<HTMLButtonElement>, key) => {
-        console.log(key);
+    const deleteListItem = (e: MouseEvent<HTMLButtonElement>, itemId: number) => {
         const temp = list.slice();
-        delete temp[key];
+        delete temp[itemId];
         setList(temp);
     };
 
-    return { value: inputValue, list, onChangeHandler, onPressEnter, deleteListItem };
+    const onChangeCheckBox = (e: ChangeEvent<HTMLInputElement>, checked: boolean, itemId: number) => {    
+        const temp = list.slice();
+        temp[itemId].completed = checked;
+        setList(temp);
+    };
+
+    return { 
+        value: inputValue,
+        list,
+        onChangeHandler,
+        onPressEnter,
+        deleteListItem,
+        onChangeCheckBox,
+    };
 };
 
 export default useToDoList;

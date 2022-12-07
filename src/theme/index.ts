@@ -29,9 +29,9 @@ const theme = createTheme({
         },
         secondary: {
             main: '#A9AF7E',
-            light: '#E6E5A3',
+            light: '#C7CFB7',
             dark: '#557153',
-        }
+        },
     }
 });
 
