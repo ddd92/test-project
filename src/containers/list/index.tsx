@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { styled, List } from "@mui/material";
+import { styled, List, Button } from "@mui/material";
 import useToDoList from "hooks/list";
 import { ListItemTypes } from "types/List";
 import AddItem from 'components/list/AddItem';
@@ -13,6 +13,8 @@ const index: FunctionComponent = () => {
         onPressEnter,
         deleteListItem,
         onChangeCheckBox,
+        setFilterData,
+        initListData,
     } = useToDoList();
 
     return ( 
@@ -30,6 +32,11 @@ const index: FunctionComponent = () => {
                     />)
                 )}
             </ListContainer>
+            <div>
+                <Button type='button' onClick={initListData}>All</Button>
+                <Button type='button' onClick={(e) => setFilterData(e, false)}>Active</Button>
+                <Button type='button' onClick={(e) => setFilterData(e, true)}>Completed</Button>
+            </div>
         </Container>
     );
 };

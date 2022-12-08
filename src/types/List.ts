@@ -16,6 +16,8 @@ interface ListTypes extends AddItemTypes {
     list: ListData[],
     deleteListItem: (e: MouseEvent<HTMLButtonElement>, itemId: number) => void,
     onChangeCheckBox: (e: ChangeEvent<HTMLInputElement>, checked: boolean, itemId: number) => void,
+    setFilterData: (e: MouseEvent<HTMLButtonElement>, completed: boolean) => void,
+    initListData: () => void,
 }
 
 interface ListItemTypes {

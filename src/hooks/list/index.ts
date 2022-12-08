@@ -3,6 +3,7 @@ import { ListTypes, ListData } from 'types/List';
 
 const useToDoList = (): ListTypes => {
     const [list, setList] = useState<ListData[]>([]);
+    const [all, setAllList] = useState<ListData[]>([]);
     const [inputValue, setInputValue] = useState<string>('');
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -42,6 +43,23 @@ const useToDoList = (): ListTypes => {
         setList(temp);
     };
 
+    const setFilterData = (e: MouseEvent<HTMLButtonElement>, completed: boolean) => {
+        if(list?.length > 0) {
+            const allData = all.length > 0 ? all : list;
+            setAllList(allData);
+            const data = allData.filter((value) => value.completed === completed);
+            setList(data);
+        }
+    };
+
+    const initListData = () => {
+        if(list?.length > 0) {
+            const allData = all.length > 0 ? all : list;
+            setAllList([]);
+            setList(allData);
+        }
+    };
+
     return { 
         value: inputValue,
         list,
@@ -49,6 +67,8 @@ const useToDoList = (): ListTypes => {
         onPressEnter,
         deleteListItem,
         onChangeCheckBox,
+        setFilterData,
+        initListData,
     };
 };
 
