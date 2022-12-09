@@ -7,16 +7,15 @@ const useToDoList = (): ListTypes => {
     const [inputValue, setInputValue] = useState<string>('');
 
     const onChangeHandler = ({ target } : ChangeEvent<HTMLInputElement>) => {
-        const { value } = target;
-        setInputValue(value);
+        if (target){
+            const { value } = target as any;
+            setInputValue(value);
+        }
     };
 
-    const onPressEnter = (e: KeyboardEvent<HTMLInputElement>) => {
-        const { key, code, nativeEvent } = e;
-
+    const onPressEnter = ({ key, code, nativeEvent }: KeyboardEvent<HTMLInputElement>) => {
         if(key === 'Enter' || code === 'Enter'){
-            const { isComposing } = nativeEvent;
-
+            const { isComposing } = nativeEvent as any;
             if(!isComposing){
                 const temp = list.slice();
                 temp.push({

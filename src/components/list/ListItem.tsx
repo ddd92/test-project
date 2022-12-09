@@ -7,7 +7,6 @@ import {
     ListItemIcon,
     Checkbox,
     ListItemText,
-    ListItemButton,
     IconButton,
 } from '@mui/material';
 import { RemoveCircle } from '@mui/icons-material';
@@ -16,21 +15,6 @@ import { Theme } from '@mui/system';
 
 const index = (props: ListItemTypes) => {
     const { dueDate, content, completed, itemId, deleteListItem, onChangeCheckBox } = props;
-    const [checked, setChecked] = React.useState([0]);
-
-    const handleToggle = () => () => {
-        const currentIndex = checked.indexOf(itemId);
-        const newChecked = [...checked];
-
-        if (currentIndex === -1) {
-            newChecked.push(itemId);
-        } else {
-            newChecked.splice(currentIndex, 1);
-        }
-
-        setChecked(newChecked);
-    };
-
     const labelId = `checkbox-list-label-${itemId}`;
 
     return (
@@ -41,7 +25,6 @@ const index = (props: ListItemTypes) => {
                 </IconButton>
             )}
         >
-            {/* <ListItemContent onClick={handleToggle} > */}
                 <ListItemIcon>
                 <Checkbox
                     edge="start"
@@ -59,7 +42,6 @@ const index = (props: ListItemTypes) => {
                     <Divider orientation="vertical" variant="middle" flexItem />
                     <TextContent id={labelId} primary={content} />
                 </CompletedContainer>
-            {/* </ListItemContent> */}
         </ListItemContainer>
     );
 };
@@ -88,13 +70,6 @@ const CompletedContainer = styled('div')(({ theme, completed } : { theme?: Theme
         border: `1px solid ${theme.palette.secondary.light}`,
     }
 }));
-
-// const ListItemContent = styled(ListItemButton)(({ 
-//     justifyContent: 'start',
-//     width: '100%',
-//     paddingRight: '10px',
-// }));
-
 
 const DueDate = styled('span')(({
     marginRight: '15px',
