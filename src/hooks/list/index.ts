@@ -6,8 +6,8 @@ const useToDoList = (): ListTypes => {
     const [all, setAllList] = useState<ListData[]>([]);
     const [inputValue, setInputValue] = useState<string>('');
 
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        const { value } = e.target;
+    const onChangeHandler = ({ target } : ChangeEvent<HTMLInputElement>) => {
+        const { value } = target;
         setInputValue(value);
     };
 
@@ -47,7 +47,9 @@ const useToDoList = (): ListTypes => {
         if(list?.length > 0) {
             const allData = all.length > 0 ? all : list;
             setAllList(allData);
-            const data = allData.filter((value) => value.completed === completed);
+            const filterData = allData.slice();
+            
+            const data = filterData.filter((value) => value.completed === completed);
             setList(data);
         }
     };

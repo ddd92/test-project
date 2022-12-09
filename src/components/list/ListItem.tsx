@@ -45,7 +45,7 @@ const index = (props: ListItemTypes) => {
                 <ListItemIcon>
                 <Checkbox
                     edge="start"
-                    defaultChecked={completed}
+                    checked={completed}
                     tabIndex={-1}
                     disableRipple
                     inputProps={{ 'aria-labelledby': labelId }}
