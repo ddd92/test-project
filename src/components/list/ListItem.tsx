@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+// import moment from 'moment';
 import { styled } from '@mui/material/styles';
 import {
     Divider,
@@ -12,6 +12,7 @@ import {
 import { RemoveCircle } from '@mui/icons-material';
 import { ListItemTypes } from 'types/List';
 import { Theme } from '@mui/system';
+import DatePicker from '../common/DatePicker';
 
 const index = (props: ListItemTypes) => {
     const { dueDate, content, completed, itemId, deleteListItem, onChangeCheckBox } = props;
@@ -37,7 +38,7 @@ const index = (props: ListItemTypes) => {
                 </ListItemIcon>
                 <CompletedContainer completed={completed.toString()} >
                     <DueDate>
-                        {moment(dueDate).format('MM/DD')}
+                        <DatePicker defaultValue={dueDate} />
                     </DueDate>
                     <Divider orientation="vertical" variant="middle" flexItem />
                     <TextContent id={labelId} primary={content} />

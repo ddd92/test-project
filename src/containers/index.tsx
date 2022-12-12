@@ -18,7 +18,6 @@ function index() {
                 </LoadingContainer>
             }>
                 <Routes>
-
                     <Route path='/' element={<Home />} />
                     <Route path='/list' element={<List />} />
                 </Routes>
