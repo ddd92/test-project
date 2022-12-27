@@ -18,6 +18,7 @@ interface ListTypes extends AddItemTypes {
     onChangeCheckBox: (e: ChangeEvent<HTMLInputElement>, checked: boolean, itemId: number) => void,
     setFilterData: (e: MouseEvent<HTMLButtonElement>, completed: boolean) => void,
     initListData: () => void,
+    onChangeDate?: ({date, itemId} : { date : Date, itemId: number }) => void,
 }
 
 interface ListItemTypes {

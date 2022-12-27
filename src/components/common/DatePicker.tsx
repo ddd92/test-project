@@ -7,10 +7,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers';
 import { DatePickerTypes } from 'types/DatePicker';
 
-const index = ({ defaultValue } : DatePickerTypes) => {
+const index = ({ defaultValue, onChangeDate } : DatePickerTypes) => {
     const [value, setValue] = useState<Dayjs | null>(dayjs(defaultValue));
     const handleChange = (date: Dayjs | null) => {
         setValue(date);
+        onChangeDate();
     };
 
     return (

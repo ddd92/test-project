@@ -7,6 +7,7 @@ import { CircularProgress } from '@mui/material';
 import Header from '../components/common/Header.jsx';
 const Home = lazy(()=> import('./home/index'));
 const List = lazy(()=> import('./list/index'));
+const Test = lazy(() => import('./test/index'));
 
 function index() {
     return (
@@ -20,6 +21,7 @@ function index() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/list' element={<List />} />
+                    <Route path='/test' element={<Test />} />
                 </Routes>
             </Suspense>
         </Layout>

@@ -1,10 +1,15 @@
-import { useState, ChangeEvent, KeyboardEvent, MouseEvent } from "react";
+import { useState, ChangeEvent, KeyboardEvent, MouseEvent, useEffect } from "react";
 import { ListTypes, ListData } from 'types/List'; 
 
 const useToDoList = (): ListTypes => {
     const [list, setList] = useState<ListData[]>([]);
     const [all, setAllList] = useState<ListData[]>([]);
     const [inputValue, setInputValue] = useState<string>('');
+
+    useEffect(()=>{
+        const Wd = window as any;
+        window.localStorage.setIem(all) as any;
+    },[all]);
 
     const onChangeHandler = ({ target } : ChangeEvent<HTMLInputElement>) => {
         if (target){
@@ -42,6 +47,12 @@ const useToDoList = (): ListTypes => {
         setList(temp);
     };
 
+    const onChangeDate = ({date, itemId} : { date : Date, itemId: number }) => {
+        const temp = list.slice();
+        temp[itemId].dueDate = new Date(date);
+        setList(temp);
+    };
+
     const setFilterData = (e: MouseEvent<HTMLButtonElement>, completed: boolean) => {
         if(list?.length > 0) {
             const allData = all.length > 0 ? all : list;
@@ -70,6 +81,7 @@ const useToDoList = (): ListTypes => {
         onChangeCheckBox,
         setFilterData,
         initListData,
+        onChangeDate,
     };
 };
 

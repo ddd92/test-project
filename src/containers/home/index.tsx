@@ -8,6 +8,7 @@ const index: FunctionComponent = () => {
         <Container>
             <Title>Todo List</Title>
             <Link to={'/list'}><StartIcon /></Link>
+            <Link to={'/test'}>test</Link>
         </Container>
     );
 };
